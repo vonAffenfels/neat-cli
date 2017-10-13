@@ -50,7 +50,7 @@ cli.on('scriptsLoaded', (scripts) => {
     console.log("Loaded scripts. Total: " + scripts.length);
 });
 
-cli.on('monitoringStarted', (scripts) => {
+cli.on('monitoringStarted', (socket) => {
     console.log("Script is now monitored by server at " + config.monitoring.statusUrl);
 });
 
