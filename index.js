@@ -101,14 +101,14 @@ module.exports = class NeatCli extends EventEmitter {
     loadScripts() {
         return new Promise((resolve, reject) => {
 
-            fs.readdir(this.config.scriptRootPath, (err, directories) => {
+            fs.readdir(this.config.scriptsPath, (err, directories) => {
                 if (err) {
                     return reject(err);
                 }
 
                 Promise.map(directories, (directory) => {
                     return new Promise((res) => {
-                        fs.readFile(this.config.scriptRootPath + "/" + directory + "/package.json", (err, packageJson) => {
+                        fs.readFile(this.config.scriptsPath + "/" + directory + "/package.json", (err, packageJson) => {
                             if (err) {
                                 return reject(err);
                             }
@@ -116,7 +116,7 @@ module.exports = class NeatCli extends EventEmitter {
                             packageJson = JSON.parse(packageJson.toString());
                             packageJson.scriptConfig = null;
 
-                            fs.readFile(this.config.scriptRootPath + "/" + directory + "/script.json", (err, scriptJson) => {
+                            fs.readFile(this.config.scriptsPath + "/" + directory + "/script.json", (err, scriptJson) => {
 
                                 if (err) {
                                     return reject(err);
