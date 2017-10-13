@@ -1,0 +1,26 @@
+{
+    "name": "neat-cli",
+    "version": "1.0.0",
+    "description": "Execute & monitor 'Neat' scripts",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/n0skillg3t/neat-cli.git"
+    },
+    "author": "Marc Okroy <marc.okroy@web.de>",
+    "license": "ISC",
+    "dependencies": {},
+    "peerDependencies": {
+        "bluebird": "^3.4.6",
+        "commander": "2.9.x",
+        "intercept-stdout": "^0.1.2",
+        "moment": "^2.15.1",
+        "neat-base": "^1.0.7",
+        "socket.io-client": "^2.0.3",
+        "strip-ansi": "^4.0.0",
+        "underscore": "^1.8.3"
+    }
+}
