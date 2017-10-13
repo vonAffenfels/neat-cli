@@ -15,7 +15,11 @@ let fs = require("fs");
 
 let defaultConfig = {
     rootDir: __dirname + "/../../",
-    scriptRootPath: this.rootDir + "/scripts",
+    scriptsPath: this.rootDir + "/scripts",
+    modulesPath: this.rootDir + "/modules",
+    configPath: this.rootDir + "/config",
+    applicationConfigPath: this.rootDir + "/config/application",
+    logDir: this.rootDir + "/logs",
     argv: process.argv
 };
 
@@ -250,17 +254,17 @@ module.exports = class NeatCli extends EventEmitter {
 
                             // PATHS
                             root_path: self.config.rootDir,
-                            modules_path: self.config.rootDir + "/modules",
-                            config_path: self.config.rootDir + "/config",
-                            scripts_path: self.config.scriptRootPath,
-                            application_config_path: self.config.rootDir + "/config/application",
+                            modules_path: self.config.modulesPath,
+                            config_path: self.config.configPath,
+                            scripts_path: self.config.scriptsPath,
+                            application_config_path: self.config.applicationConfigPath,
+                            logDir: self.config.logDir,
 
                             // LOG LEVELS
                             logLevelConsole: logLevel,
                             logLevelFile: logLevel,
                             logLevelRemote: logLevel,
                             logFormat: "DD.MM.YYYY hh:mm:ss",
-                            logDir: self.config.rootDir + "/logs",
                             logDisabled: false,
                             quiet: !!this.parent.quiet,
                         });
