@@ -15,11 +15,11 @@ let fs = require("fs");
 
 let defaultConfig = {
     rootDir: __dirname + "/../../",
-    scriptsPath: this.rootDir + "/scripts",
-    modulesPath: this.rootDir + "/modules",
-    configPath: this.rootDir + "/config",
-    applicationConfigPath: this.rootDir + "/config/application",
-    logDir: this.rootDir + "/logs",
+    scriptsPath: __dirname + "/../../scripts",
+    modulesPath: __dirname + "/../../modules",
+    configPath: __dirname + "/../../config",
+    applicationConfigPath: __dirname + "/../../config/application",
+    logDir: __dirname + "/../../logs",
     argv: process.argv
 };
 
