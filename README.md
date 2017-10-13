@@ -1,6 +1,6 @@
 # neat-cli
 
-##Setup
+## Setup
 
 ```
 const NeatCli = require("neat-cli");
@@ -42,7 +42,7 @@ cli.on('scriptFinished', () => {
 });
 ```
 
-##Usage
+## Usage
 
 Start the file with node in which you created a new instance of NeatCli,
 for example 'cli.js':
