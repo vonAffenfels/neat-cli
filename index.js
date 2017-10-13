@@ -281,14 +281,10 @@ module.exports = class NeatCli extends EventEmitter {
 
                     } catch (err) {
                         command.help((helpText) => {
-                            let message = err.toString() + "\n";
-                            return message + helpText;
+                            console.log(err);
+                            return helpText;
                         })
                     }
-
-                    /* if(self.runningScript && (self.runningScript.name !== script.name || self.runningScript.project !== script.project)) {
-                        process.emit("status:wrongScript", script);
-                    } */
                 });
 
                 return true;
