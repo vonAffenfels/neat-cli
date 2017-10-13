@@ -270,7 +270,7 @@ module.exports = class NeatCli extends EventEmitter {
 
                         let socket = self.monitoringConnected ? self.socket : null;
 
-                        Application.runScript(script, socket).then(() => {
+                        Application.runScript(script, socket, function () {
                             self.emit('scriptFinished');
                             process.emit("status:finished",0);
                             if(!self.monitoringConnected) {
