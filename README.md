@@ -25,16 +25,33 @@ const cli = new NeatCli(config);
 ## Events
 
 ```
+cli.on('socketOpened', (socket) => {
+    console.log("Trying to establish a socket connection to " + config.monitoring.statusUrl);
+});
+
 cli.on('socketConnectionTimeout', () => {
     console.log("Could not establish a connection to " + config.monitoring.statusUrl);
 });
 
-cli.on('scriptsLoaded', (data) => {
-    console.log("Loaded scripts. Total: " + data.length);
+cli.on('socketConnected', (socket) => {
+    console.log("Established socket connection. Socket ID: " + socket.id);
 });
 
-cli.on('socketConnected', (data) => {
-    console.log("Established socket connection. Socket ID: " + data.id);
+cli.on('socketDisonnected', (socket) => {
+    console.log("Lost connection to monitoring server.");
+});
+
+cli.on('socketError', (data) => {
+    console.log("Monitoring Server rejected monitoring with error.");
+    console.log(data.error);
+});
+
+cli.on('scriptsLoaded', (scripts) => {
+    console.log("Loaded scripts. Total: " + scripts.length);
+});
+
+cli.on('monitoringStarted', (scripts) => {
+    console.log("Script is now monitored by server at " + config.monitoring.statusUrl);
 });
 
 cli.on('scriptFinished', () => {

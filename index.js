@@ -361,7 +361,10 @@ module.exports = class NeatCli extends EventEmitter {
             });
 
             this.socket.on('status:error', (e) => {
-                this.emit('socketError', this.socket);
+                this.emit('socketError', {
+                    socket: this.socket,
+                    error: e
+                });
                 return reject(e);
             });
 
