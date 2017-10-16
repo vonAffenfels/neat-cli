@@ -4,12 +4,15 @@
 
 ```
 const NeatCli = require("neat-cli");
-```
-```
+
 const config = {
-    rootDir: __dirname, // required
-    scriptRootPath: __dirname + "/scripts", // required
-    argv: process.argv, // optional, default: process.argv
+    rootDir: __dirname + "/../../",
+    scriptsPath: __dirname + "/../../scripts",
+    modulesPath: __dirname + "/../../modules",
+    configPath: __dirname + "/../../config",
+    applicationConfigPath: __dirname + "/../../config/application",
+    logDir: __dirname + "/../../logs",
+    argv: process.argv
     monitoring: { // optional, default: no monitoring
         socketConnectionTimeout: 5000,
         statusUrl: "http://localhost:13338", // required - The URL to establish a socket connection to
@@ -17,8 +20,7 @@ const config = {
         passStatsInterval: 500
     }
 };
-```
-```
+
 const cli = new NeatCli(config);
 ```
 

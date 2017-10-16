@@ -342,14 +342,22 @@ module.exports = class NeatCli extends EventEmitter {
             this.emit('socketOpened', this.socket);
 
             let connectionTimeout = setTimeout(() => {
-                this.socket.close();
+
+                this.socketConnectionTimedOut = true;
                 this.emit('socketConnectionTimeout');
+
                 return reject("failed to connect to " + this.runningScript.scriptConfig.monitoring.statusUrl);
+
             }, (this.config.monitoring.socketConnectionTimeout || 5000));
 
 
             // wait for response from server
             this.socket.on('status:connected', (scriptRuleConfig) => {
+
+                if(this.socketConnectionTimedOut) {
+                    return this.socket.disconnect();
+                }
+
                 this.monitoringConnected = true;
                 this.runningScript.scriptRuleConfig = scriptRuleConfig;
                 this.socket.emit("status:starting");
@@ -361,6 +369,7 @@ module.exports = class NeatCli extends EventEmitter {
             });
 
             this.socket.on('status:error', (e) => {
+
                 this.emit('socketError', {
                     socket: this.socket,
                     error: e

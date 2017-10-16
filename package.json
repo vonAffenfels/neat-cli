@@ -1,6 +1,6 @@
 {
   "name": "neat-cli",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Execute & monitor 'Neat' scripts",
   "main": "index.js",
   "scripts": {
