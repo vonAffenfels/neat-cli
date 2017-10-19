@@ -79,7 +79,10 @@ module.exports = class NeatCli extends EventEmitter {
         }).then(() => {
 
             this.parse(this.config.argv);
-            this.startMonitoring();
+
+            if(this.monitoringConnected) {
+                this.startMonitoring();
+            }
 
         }).catch((e) => {
             console.log(e);
@@ -323,7 +326,7 @@ module.exports = class NeatCli extends EventEmitter {
             }
 
             if (!this.runningScript.scriptConfig.monitoring) {
-                return reject(new Error("monitoring not configured"));
+                return resolve(null);
             }
 
             let projectFolderName = null;
