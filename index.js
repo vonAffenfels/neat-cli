@@ -33,6 +33,15 @@ module.exports = class NeatCli extends EventEmitter {
         }
 
         this.config = _.extend(defaultConfig, config);
+
+        // resolve paths
+        this.config.rootDir = path.resolve(this.config.rootDir);
+        this.config.scriptsPath = path.resolve(this.config.scriptsPath);
+        this.config.modulesPath = path.resolve(this.config.modulesPath);
+        this.config.configPath = path.resolve(this.config.configPath);
+        this.config.applicationConfigPath = path.resolve(this.config.applicationConfigPath);
+        this.config.logDir = path.resolve(this.config.logDir);
+
         this.scriptData = null;
 
         commander.option("-v, --verbose", "Script verbosity");
@@ -62,7 +71,6 @@ module.exports = class NeatCli extends EventEmitter {
             return this.initializeMonitoring().then(() => {
                 return this.registerCommands();
             }).catch((e) => {
-                //TODO: provide config option to stop process when monitoring fails to initialize
                 console.log("Could not initialize monitoring for script " + this.runningScript.name);
                 console.log(e);
                 return this.registerCommands();

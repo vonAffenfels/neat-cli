@@ -12,7 +12,7 @@ const config = {
     configPath: __dirname + "/../../config",
     applicationConfigPath: __dirname + "/../../config/application",
     logDir: __dirname + "/../../logs",
-    argv: process.argv
+    argv: process.argv,
     monitoring: { // optional, default: no monitoring
         socketConnectionTimeout: 5000,
         statusUrl: "http://localhost:13338", // required - The URL to establish a socket connection to

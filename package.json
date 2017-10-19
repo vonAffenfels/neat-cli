@@ -17,12 +17,13 @@
       "commander": "2.9.x",
       "intercept-stdout": "^0.1.2",
       "moment": "^2.15.1",
-      "neat-base": "^1.0.13",
       "socket.io-client": "^2.0.3",
       "strip-ansi": "^4.0.0",
       "underscore": "^1.8.3"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+      "neat-base": "^1.0.13"
+  },
   "bugs": {
     "url": "https://github.com/n0skillg3t/neat-cli/issues"
   },
