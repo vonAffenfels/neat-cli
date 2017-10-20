@@ -68,9 +68,14 @@ module.exports = class NeatCli extends EventEmitter {
                 }
             }
 
+            if(!this.runningScript) {
+                return Promise.reject(new Error("Script not found!"));
+            }
+
             return this.initializeMonitoring().then(() => {
                 return this.registerCommands();
             }).catch((e) => {
+
                 console.log("Could not initialize monitoring for script " + this.runningScript.name);
                 console.log(e);
                 return this.registerCommands();
