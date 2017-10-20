@@ -69,7 +69,9 @@ module.exports = class NeatCli extends EventEmitter {
             }
 
             if(!this.runningScript) {
-                return Promise.reject(new Error("Script not found!"));
+                return this.registerCommands().then(() => {
+                    return Promise.resolve();
+                });
             }
 
             return this.initializeMonitoring().then(() => {
@@ -91,7 +93,7 @@ module.exports = class NeatCli extends EventEmitter {
 
         }).catch((e) => {
             console.log(e);
-            commander.help();
+            commander.outputHelp();
         });
     }
 
