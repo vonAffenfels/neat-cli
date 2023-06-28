@@ -292,12 +292,16 @@ module.exports = class NeatCli extends EventEmitter {
 
                         let socket = self.monitoringConnected ? self.socket : null;
 
-                        Application.runScript(script, socket, function () {
+                        Application.runScript(script, socket, function (err, data) {
                             self.emit('scriptFinished');
-                            process.emit("status:finished",0);
+                            if(err) {
+                                console.log(err);
+                                self.emit('scriptFailed');
+                            }
+                            process.emit("status:finished",err ? 1 : 0);
                             if(!self.monitoringConnected) {
                                 Application.stop();
-                                process.exit(0);
+                                process.exit(err ? 1 : 0);
                             }
                         });
 
